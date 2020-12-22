@@ -9,10 +9,11 @@ exports.signUp = (req, res, next) => {
         console.log("Connected!");
 
         let user = {
-            name: req.body.address
+            name: req.body.name,
+            adress: req.body.address
         }
 
-        con.query('SELECT adress FROM customers WHERE adress = ?' , user, function (err, result){
+        con.query('SELECT adress FROM customers WHERE adress = ?' , user.adress, function (err, result){
             if  (err) throw err;
 
             console.log(result.lenght);
@@ -25,7 +26,7 @@ exports.signUp = (req, res, next) => {
 
           } else {
 
-            const sql = "INSERT INTO customers SER ?";
+            const sql = "INSERT INTO customers SET ?";
 
             con.query(sql, user, function (err, result){
                 if (err) throw err;
