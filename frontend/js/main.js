@@ -1,12 +1,14 @@
 
 
-let nameValue = document.getElementById('name').Value;
-let emailValue = document.getElementById('email').Value;
+let nameValue = document.getElementById('name').value;
+let emailValue = document.getElementById('email').value;
 
 const objetToSend = {
     'name': nameValue,
     'address': emailValue,
 }
+console.log(objetToSend);
+
 
 //PostQuery
 
@@ -22,9 +24,8 @@ async function queryPost(url) {
     
     let reponse = await fetch (url, options);
     let data = await response.json();
+    console.log(data);
     return data;
-
-    
 }
 
 
