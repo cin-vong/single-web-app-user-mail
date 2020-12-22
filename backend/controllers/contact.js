@@ -1,7 +1,9 @@
-const pool = mysql.createPool(dbParams);
+const mysql = require('mysql');
+const dbParams = require('../database/dbParams');
+
 
 exports.signUp = (req, res, next) => {
-
+    const pool = mysql.createPool(dbParams);
     pool.getConnection(function (err, con){
         if (err) throw err;
         console.log("Connected!");
@@ -10,7 +12,7 @@ exports.signUp = (req, res, next) => {
             name: req.body.address
         }
 
-        con.query('SELECT address FROM customers Where address = ?' , user, function (err, result){
+        con.query('SELECT adress FROM customers WHERE adress = ?' , user, function (err, result){
             if  (err) throw err;
 
             console.log(result.lenght);
@@ -27,7 +29,7 @@ exports.signUp = (req, res, next) => {
 
             con.query(sql, user, function (err, result){
                 if (err) throw err;
-                console.log("Nb d'ajout" = result.affecedRows);
+                console.log("Nb d'ajout =" + result.affectedRows);
                 res.status(201).json({
                     message: 'Objet crée !'
                      });

@@ -1,13 +1,6 @@
 const mysql = require('mysql');
+const dbParams = require('./dbParams');
 
-module.exports = (paramsDb, queryParams) => {
-    const connection = mysql.createConnection(paramsDb);
-    connection.connect(err => {
-        console.log('Connecté à la BD');
+const dbConnect = mysql.createConnection(dbParams);
 
-        connection.query(queryParams, (err, result)=>{
-            if (err) throw err;
-            console.log("En marche !");
-        });
-    })
-};
+module.exports = dbConnect

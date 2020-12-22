@@ -4,7 +4,6 @@ const contactCtrl = require('../controllers/contact');
 
 router.post('/signup', contactCtrl.signUp);
 
-router.post('/signin', contactCtrl.signIp);
 
 module.exports = router;
 
