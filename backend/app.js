@@ -35,5 +35,6 @@ app.use(bodyParser.json());
 app.use(cors())
 
 app.use('/api/auth', contactRoutes);
+app.use('/api/list', listRoutes);
 
 module.exports = app;

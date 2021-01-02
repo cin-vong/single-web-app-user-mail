@@ -33,7 +33,7 @@ exports.signUp = (req, res, next) => {
                 console.log("Nb d'ajout =" + result.affectedRows);
                 res.status(201).json({
                     message: 'Objet crée !'
-                     });
+                     })
                 });
             };
         })
