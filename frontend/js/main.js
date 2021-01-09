@@ -7,7 +7,6 @@ const objetToSend = {
 }
 console.log(objetToSend);
 
-
 //PostQuery
 
 async function queryPost(url) {
@@ -29,9 +28,11 @@ async function queryPost(url) {
 //Signup
 const btn = document.getElementById('btn');
 
-btn.addEventListener('click', e => {
+btn.addEventListener('click', async e => {
     e.preventDefault();
-    queryPost('http://localhost:3000/api/auth/signup');
+    let response = await queryPost('http://localhost:3000/api/auth/signup');
+
+    displayData(response.json())
 })
 
 //Affichage
@@ -65,12 +66,11 @@ btn.addEventListener('click', e => {
   }
 
   const btnA = document.getElementById('btnA');
-  btnA.addEventListener('click', e => {
+  btnA.addEventListener('click', async e => {
       e.preventDefault();
-     let response = await queryPost('http://localhost:3000/api/list/all');
+     let response = await queryPost('http://localhost:3000/api/list/user');
 
      displayData(response.json())
-
   });
 
 
