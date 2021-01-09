@@ -36,14 +36,6 @@ btn.addEventListener('click', e => {
 
 //Affichage
 
-const listeReponse = [
-    {
-    'name': nameValue,
-    'address': emailValue,
-    }
-  ]
-  
-
   function displayData(data) {
     const listeBox = document.getElementById('liste');
     
@@ -61,21 +53,27 @@ const listeReponse = [
       const name = document.createElement('h2');
     name.textContent = person.name;
     article.appendChild(name)
+
+    const email = document.createElement('h2');
+    email.textContent = person.email;
+    article.appendChild(email)
       
        const infos = document.createElement('p');
-    infos.textContent = `Email: ${person.emailValue} Nom: ${person.nameValue}`;
+    infos.textContent = `Email: ${person.email} Nom: ${person.name}`;
     article.appendChild(infos) 
-
-    const btnA = document.getElementById('btnA');
-    btnA.addEventListener('click', e => {
-        e.preventDefault();
-        queryPost('http://localhost:3000/api/auth');
-    })
-
     }
   }
-   
-  displayData(listeReponse)
+
+  const btnA = document.getElementById('btnA');
+  btnA.addEventListener('click', e => {
+      e.preventDefault();
+     let response = await queryPost('http://localhost:3000/api/list/all');
+
+     displayData(response.json())
+
+  });
+
+
   
   
     
