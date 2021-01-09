@@ -8,6 +8,7 @@ const connection = require('./database/connexion');
 
 
 const contactRoutes = require('./routes/contact');
+const listRoutes = require('./routes/list');
 // const dbParams = require('./database/dbParams');
 
 //Connexion DB
