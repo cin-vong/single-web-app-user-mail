@@ -68,9 +68,9 @@ btn.addEventListener('click', async e => {
   const btnA = document.getElementById('btnA');
   btnA.addEventListener('click', async e => {
       e.preventDefault();
-     let response = await queryPost('http://localhost:3000/api/list/user');
+     let reponse = await queryPost('http://localhost:3000/api/list/user');
 
-     displayData(response.json())
+     displayData(reponse.json())
   });
 
 
