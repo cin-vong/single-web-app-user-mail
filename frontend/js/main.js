@@ -46,7 +46,7 @@ btn.addEventListener('click', async e => {
     listeBox.appendChild(title)
     
     for ( let i = 0; i < 10; i++ ) {
-        var data = JSON.stringify(i[0])
+        const data = JSON.stringify(i[0])
         console.log(data);
     
       const article = document.createElement('article');
