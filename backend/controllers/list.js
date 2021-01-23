@@ -20,6 +20,7 @@ exports.GetallList = (req, res, next) => {
                 con.query("SELECT * FROM customers", function (err, result, fields) {
               if (err) throw err;
                   console.log(result);
+                  return res.status(201).json({ result })
                   });
              });
          }

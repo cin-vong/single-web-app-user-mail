@@ -1,9 +1,9 @@
 const mysql = require('mysql');
 const dbParams = require('../database/dbParams');
-
+const pool = mysql.createPool(dbParams);
 
 exports.signUp = (req, res, next) => {
-    const pool = mysql.createPool(dbParams);
+    
     pool.getConnection(function (err, con){
         if (err) throw err;
         console.log("Connected!");
