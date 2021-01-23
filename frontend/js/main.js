@@ -37,44 +37,26 @@ btn.addEventListener('click', async e => {
 
 //Affichage
 
-  function displayData(data) {
-      
-    const listeBox = document.getElementById('liste');
-    
-    const title = document.createElement('h1');
-    title.textContent = 'Liste: ';
-    listeBox.appendChild(title)
-    
-    for ( let i = 0; i < 10; i++ ) {
-        const data = JSON.stringify(i[0])
-        console.log(data);
-    
-      const article = document.createElement('article');
-      listeBox.appendChild(article)
-      
-      const name = document.createElement('h2');
-    name.textContent = i[name];
-    article.appendChild(name)
-
-    const adress = document.createElement('h2');
-    adress.textContent = i[adress];
-    article.appendChild(adress)
-      
-       const infos = document.createElement('p');
-    infos.textContent = `Email: ${i.adress} Nom: ${i.name}`;
-    article.appendChild(infos) 
-    }
-  }
-
   const btnA = document.getElementById('btnA');
   btnA.addEventListener('click', async e => {
       e.preventDefault();
      let reponse = await queryPost('http://localhost:3000/api/list/user');
     console.log(reponse);
 
-     displayData(reponse)
+     displayData(reponse.result)
   });
 
-  
-
+  function displayData(arr) {
+    for( const person of arr){
+      console.log(person.name)
+      console.log(person.adress)
+      const container = document.querySelector('#result');
+      const elt1 = document.createElement('h2');
+      const elt2 = document.createElement('h3');
+      elt1.textContent = person.name;
+      elt2.textContent = person.adress;
+      container.appendChild(elt1);
+      container.appendChild(elt2);
+    }
+  }
 
